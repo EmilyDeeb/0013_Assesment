@@ -222,4 +222,5 @@ __pycache__/
 Thumbs.db
 
 # --- Files ---
-data/*
+data/
+
