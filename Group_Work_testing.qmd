@@ -45,7 +45,7 @@ format:
         \pagestyle{fancy}
         \fancyhf{}
         \fancyhead[L]{\textbf{\thepage}}  % 
-        \fancyhead[C]{\texttt{\textbf{\textcolor{AgencyRed}{TOP SECRET}}}} % 
+        \fancyhead[C]{\texttt{\textbf{\textcolor{AgencyRed}{FSDS}}}} % 
         \fancyhead[R]{\texttt{Case File: London-Airbnb}} % 
         
         \fancyfoot[L]{} % 
@@ -79,7 +79,6 @@ jupyter:
 
 
 \newpage
-\vspace*{1cm}
 
 \begin{center}
 \renewcommand{\arraystretch}{1.5} 
@@ -90,22 +89,12 @@ jupyter:
     \textbf{\texttt{>> SECTION 1: INTEGRITY PLEDGE}} \\
     \hline
     \small
-    \textit{We, "TNE$^2$ + I", pledge our honour that the work presented in this assessment is our own. Where information has been derived from other sources, we confirm that this has been indicated in the work. 
-
-AI Acknowledgement Statement
-
-This work made limited use of generative artificial intelligence tools (ChatGPT, Gemini) as a supporting aid during the research and writing process. Specifically, AI assistance was used to:
-
-•⁠  ⁠support the homogenisation and technical refinement of written commentary, ensuring clarity, consistency, and appropriate academic tone across sections;
-
-•⁠  ⁠assist with debugging and troubleshooting of code, particularly for data processing and visualisation workflows in Python;
-
-•⁠  ⁠provide guidance on improving graphical outputs and data visualisations.} \\
+    \textit{We, "TNE$^2$ + I", pledge our honour that the work presented in this assessment is our own. Where information has been derived from other sources, we confirm that this has been indicated in the work. This work made limited use of generative artificial intelligence tools (ChatGPT, Gemini) as a supporting aid during the research and writing process. Specifically, AI assistance was used to: ⁠1. support the homogenisation and technical refinement of written commentary, ensuring clarity, consistency, and appropriate academic tone across sections; 2. ⁠assist with debugging and troubleshooting of code, particularly for data processing and visualisation workflows in Python; 3. ⁠provide guidance on improving graphical outputs and data visualisations} \\
     \\
     \textbf{TIMESTAMP:} \today \\
     \hline
     
-    \textbf{\texttt{>> SECTION 2: TNE$^2$ + I (PERSONNEL)}} \\
+    \textbf{\texttt{>> SECTION 2: STUDENT NUMBERS}} \\
     \hline
     \vspace{0.2cm}
     \begin{tabular}{p{0.6\textwidth} l}
@@ -119,10 +108,10 @@ This work made limited use of generative artificial intelligence tools (ChatGPT,
     \\
     \hline
 
-    \textbf{\texttt{>> SECTION 3: INTELLIGENCE REQUEST (FEEDBACK)}} \\
+    \textbf{\texttt{>> SECTION 3: FEEDBACK REQUEST}} \\
     \hline
     \vspace{0.1cm}
-    \textbf{HQ is requested to provide critical analysis on the following sectors:}
+    \textbf{We would like feedback on the following sections:}
     \begin{itemize}
     \item \textbf{Methodology Verification (Profit Loss Model)}: Our core analysis simulates the financial impact of the council tax proposal (Figure 3.3). We assumed that council tax is a valid proxy for operating costs. Is this simplification robust for a policy briefing, or are there standard models for this that we should have considered?
 
@@ -140,7 +129,6 @@ This work made limited use of generative artificial intelligence tools (ChatGPT,
     \textbf{\texttt{*** END OF DOSSIER HEADER ***}}
 \end{center}
 \newpage
-
 
 
 
@@ -1092,6 +1080,14 @@ inner_london_outline = inner_london_outline.to_crs(msoa_merged.crs)
 
 fig, ax = plt.subplots(1, 1, figsize=(10, 8))
 
+# Remove axis ticks & labels
+ax.set_xticks([])
+ax.set_yticks([])
+
+# Remove the outer rectangle (axes spines)
+for spine in ax.spines.values():
+    spine.set_visible(False)
+
 # MSOA choropleth FIRST
 msoa_merged.plot(
     ax=ax,
@@ -1116,33 +1112,6 @@ inner_london_outline.plot(
     linewidth=0.7
 )
 
-# Real grid (OS National Grid – 5 km)
-xmin, xmax = ax.get_xlim()
-ymin, ymax = ax.get_ylim()
-
-grid_spacing = 10000  # 10 km
-
-ax.set_xticks(np.arange(xmin, xmax, grid_spacing))
-ax.set_yticks(np.arange(ymin, ymax, grid_spacing))
-
-ax.grid(
-    color="grey",
-    linestyle=":",
-    linewidth=0.5,
-    alpha=0.6
-)
-
-# Hide tick labels but keep grid
-ax.tick_params(
-    labelbottom=False,
-    labelleft=False,
-    bottom=False,
-    left=False
-)
-
-# Remove outer black frame (axes spines)
-for spine in ax.spines.values():
-    spine.set_visible(False)
 
 # Clean legend box
 leg = ax.get_legend()
@@ -1601,34 +1570,13 @@ plt.show()
 
 **Method:** To further illustrate the patterns observed in Analysis 1.3, we focus on Camden, a high-demand Inner London borough where short-term rental pressure is most pronounced. 
 
-**Key Insights:** Here, estimated Airbnb revenue exceeds private rental income across all dwelling sizes, with the rent gap widening for larger units. For two-bedroom properties, Airbnb generates around £1,000 more per month (approximately 35%), while for three-bedroom units the gap increases to about £1,800 per month (around 60%). This highlights how short-term letting creates powerful conversion incentives for family-sized dwellings in high-pressure housing markets. 
+**Key Insights:** Estimated Airbnb revenue exceeds private rental income across all dwelling sizes, with rent gaps widening for larger units. Two-bedroom properties earn around £1,000 more per month (≈35%), rising to £1,800 (≈60%) for three-bedroom units. This indicates strong conversion incentives for family-sized dwellings in high-pressure housing markets.
 
-Taken together, these figures suggest that Airbnb is actively reshaping housing incentives by opening new, uneven rent gaps. This pattern is consistent with rent gap theory as applied to short-term rentals, where platforms such as Airbnb increase the potential rent of residential properties without requiring physical redevelopment, thereby creating strong incentives to convert long-term housing into short-term use (@wachsmuth2018). As a result, these gaps pose a localized but significant risk to residential housing supply.  
+Taken together, these figures suggest Airbnb reshapes housing incentives by opening uneven rent gaps. This aligns with rent gap theory applied to short-term rentals, where platforms increase potential rent without physical redevelopment, incentivising conversion from long-term to short-term use (@wachsmuth2018), posing localized risks to housing supply. 
 
 {{< pagebreak >}}
 
 ## **Analysis 1.5** |  Illegal Revenue
-
-&nbsp;
-
-
-
-$$
-O = \frac{R}{r} \times N_{min}
-$$
-
-**Where:**
-
-*   $O$: Estimated Occupancy Rate (last 12 months)
-*   $R$: Total Number of Reviews (last 12 months)
-*   $r$: Review Rate (assumed percentage of guests who leave a review, typically 50%)
-*   $N_{min}$: Average Minimum Nights per stay
-
-This formula assumes a standard review conversion rate to estimate total bookings from visible reviews.
-
-
-
-
 
 ```{python}
 #| output: false 
@@ -2305,7 +2253,7 @@ else:
 
 Furthermore, most professional landlords have not achieved “superhost” status. Our analysis demonstrates that a larger number of Airbnb listings does not necessarily translate into better service. In fact, having an extensive portfolio does not necessarily indicate higher-quality offerings. Instead, the data shows that commercial, highly profitable listings are the primary drivers of listing volume.
 
-As a result, Airbnb's original mission—to empower individuals to share their homes for supplemental income—has shifted. The platform is now dominated by high-revenue businesses, often at the expense of quality and the authentic, home-like experience it once promoted (@theguardianairbnb).
+As a result, Airbnb's original mission—to empower individuals to share their homes for supplemental income—has shifted. The platform is now dominated by high-revenue businesses, often at the expense of quality and the authentic, home-like experience it once promoted.
 
 
 
@@ -2554,6 +2502,7 @@ short_labels = [
 # Create a numeric position for each borough on the x-axis.
 x_pos = np.arange(len(x_labels))
 
+
 # Extract the series we want to plot from the summary table:
 rev_vals = borough_summary['avg_airbnb_revenue'].values   # average annual revenue per borough
 tax_vals = borough_summary['avg_council_tax'].values      # average council tax per borough
@@ -2574,7 +2523,7 @@ rev_line = ax1.plot(
 # Label the left y-axis for revenue and set the borough names on the x-axis.
 ax1.set_ylabel('Average annual revenue (£)')
 ax1.set_xticks(x_pos)
-ax1.set_xticklabels(x_labels, rotation=90)
+ax1.set_xticklabels(short_labels, rotation=90)
 
 # Create the second axis (for council tax) sharing the same x-axis
 ax2 = ax1.twinx()
