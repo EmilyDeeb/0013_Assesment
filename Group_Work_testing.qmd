@@ -69,7 +69,7 @@ jupyter:
     % AddToShipoutPictureBG* 
     \AddToShipoutPictureBG*{%
         \AtPageLowerLeft{%
-            \includegraphics[width=\paperwidth,height=\paperheight]{cover_2.png}%
+            \includegraphics[width=\paperwidth,height=\paperheight]{Cover_2.png}%
         }%
     }
     \mbox{}
@@ -170,7 +170,7 @@ from urllib.request import urlretrieve
 
 # 1. Setup URLs
 # Using the raw links from our GitHub repository
-bib_url = "https://raw.githubusercontent.com/JIAYING-ICE/0013_Assesment/main/bio.bib"
+bib_url = "https://raw.githubusercontent.com/EmilyDeeb/0013_Assesment/refs/heads/main/bio.bib"
 csl_url = "https://raw.githubusercontent.com/JIAYING-ICE/0013_Assesment/main/harvard-cite-them-right.csl"
 img_url = "https://raw.githubusercontent.com/JIAYING-ICE/0013_Assesment/main/Cover.png"
 img_url = "https://raw.githubusercontent.com/JIAYING-ICE/0013_Assesment/main/Cover_2.png"
